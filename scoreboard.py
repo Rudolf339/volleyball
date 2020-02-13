@@ -1,5 +1,12 @@
 import pygame
 import time
+import curses
+
+scrn = curses.initscr()
+
+curses.noecho()
+curses.cbreak()
+scrn.keypad(True)
 
 pygame.init()
 
@@ -133,7 +140,19 @@ while carryOn:
             screen.blit(left, (X / 2 - left.get_width() - 500, uy + i * 70))
             screen.blit(right, (X / 2 + 500, uy + i * 70))
 
+    score_txt = str(r) +  ' : ' + str(l)
+    time_txt = str(cl[0]) + ':' + str(cl[1])
+    scrn.addstr(4, 4, score_txt)
+    scrn.addstr(5, 4, time_txt)
+
+    scrn.refresh()
     pygame.display.flip()
     clock.tick(60)
 
-pygame.quit
+
+pygame.quit()
+curses.echo()
+curses.nocbreak()
+scrn.keypad(False)
+
+curses.endwin()
