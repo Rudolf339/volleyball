@@ -1,6 +1,9 @@
 import pygame
 import time
 import curses
+import data
+
+db = data.data
 
 scrn = curses.initscr()
 
@@ -27,10 +30,13 @@ timeFont = pygame.font.SysFont('./font/Cousine-Regular.ttf', 400)
 X = 1920
 Y = 1080
 
-games = [('Legyen Sánc!', 'Gucci Gang'),
-         ('Next', 'Putty, ezt is lecsaptuk'),
-         ('Csáki lehozza', 'Nutellák')
-         ]
+# games = [('Legyen Sánc!', 'Gucci Gang'),
+#          ('Next', 'Putty, ezt is lecsaptuk'),
+#          ('Csáki lehozza', 'Nutellák')
+#          ]
+games = []
+for g in db['matches']:
+    games.append((g['l'], g['r']))
 
 screen = pygame.display.set_mode((X, Y))
 pygame.display.set_caption('ponttábla')
@@ -38,7 +44,7 @@ pygame.display.set_caption('ponttábla')
 
 carryOn = True
 timer = False
-t = 585  # seconds
+t = 0  # seconds
 clock = pygame.time.Clock()
 # -------- DEFINITIONS --------
 
@@ -64,7 +70,7 @@ def timeFormat(t):
 def next_round():
     games.remove(games[0])
 
-
+current_round = 0
 c = time.time()
 # -------- Main Program Loop -----------
 while carryOn:
@@ -179,13 +185,28 @@ while carryOn:
             screen.blit(left, (X / 2 - left.get_width() - 500, uy + i * 70))
             screen.blit(right, (X / 2 + 500, uy + i * 70))
 
+    if t >= 600 and l != r:  # There's a winner
+        if l > r:
+            db['teams'][games[0][0]]['wins'] += 1
+        else:
+            db['teams'][games[0][1]]['wins'] += 1
+        db['teams'][games[0][0]]['points'] += l
+        db['teams'][games[0][1]]['wins'] += r
+        t = 0
+        l = 0
+        r = 0
+        timer = False
+        
+        current_round += 1
+        next_round()
+        
     # ----- curses write -----
     score_txt = str(r) + ' : ' + str(l)
     time_txt = str(cl[0]) + ':' + str(cl[1])
     scrn.addstr(4, 4, score_txt)
     scrn.addstr(5, 4, time_txt)
     # scrn.addstr(6, 4, k)
-    scrn.addstr(4, 12, games[0][0] + ' : ' + games[0][1])
+    scrn.addstr(4, 12, games[0][0] + ' : ' + games[0][1] + ' ' * 5)
     
     # Refresh screens
     scrn.refresh()
