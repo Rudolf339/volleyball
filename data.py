@@ -1,165 +1,54 @@
 import csv
 import vb
 
-results = []
-with open("./meccsek.csv") as csvfile:
+match_csv = []
+with open('./meccsek.csv') as csvfile:
     reader = csv.reader(csvfile, delimiter=';', quotechar='|')
     for row in reader:
-        results.append(row)
+        match_csv.append(row)
+        
+group_csv = []
+with open('./csoportok.csv') as csvfile:
+    reader = csv.reader(csvfile, delimiter=';', quotechar='|')
+    raw_csv = []
+    for row in reader:
+        raw_csv.append(row)
+    ml = 0
+    for r in raw_csv:
+        ml = max(len(r), ml)
 
-# for i in range(len(results)):
-#     results[i][0] = int(results[i][0].split(':').join(''))
+    # fill out empty spaces
+    for row in range(len(raw_csv)):
+        for cl in range(ml):
+            try:
+                a = raw_csv[row][cl]
+            except IndexError:
+                raw_csv[row].append('')
 
-teams = [vb.team('ChikNwins', 'A'),
-         vb.team('Csak úgy', 'A'),
-         vb.team('Wasserspitzmäuser', 'A'),
-         vb.team('Ked Regeli Djuras', 'A'),
-         vb.team('MAMBA', 'A'),
-         vb.team('Hupszidézi', 'B'),
-         vb.team('That\'s what she set', 'B'),
-         vb.team('Avangurs', 'B'),
-         vb.team('Krrr', 'B'),
-         vb.team('Hóbortos hubihuszárnyunyuskák', 'B'),
-         vb.team('FRÖCCSKÖLŐK', 'C'),
-         vb.team('Give it up', 'C'),
-         vb.team('Pontverseny', 'C'),
-         vb.team('Volley Buli', 'C'),
-         vb.team('Nicolas Cage szektája', 'D'),
-         vb.team('Ászéjszaka', 'D'),
-         vb.team('Bioszból elég, ha kettes', 'D'),
-         vb.team('Csumpi csapat', 'D'),
-         vb.team('Last last minute', 'D'),
-         vb.team('ettemmaxddddd', 'E'),
-         vb.team('Végmoréna sánc', 'E'),
-         vb.team('A Team ++', 'E'),
-         vb.team('Vicceskóla', 'E')
-         ]
+    print()
+    # flip cloumns and rows
+    for c in range(ml):
+        group_csv.append([])
+        for r in range(len(raw_csv)):
+            if raw_csv[r][c] != '':
+                group_csv[c].append(raw_csv[r][c])
+
 
 data = {
-    'teams':{
-        'ChikNwins':{
-            'group':'A',
-            'points':0,
-            'wins':0,
-            },
-        'Csak úgy':{
-            'group':'A',
-            'points':0,
-            'wins':0,
-            },
-        'Wasserspitzmäuser':{
-            'group':'A',
-            'points':0,
-            'wins':0,
-            },
-        'Ked Regeli Djuras':{
-            'group':'A',
-            'points':0,
-            'wins':0,
-            },
-        'MAMBA':{
-            'group':'A',
-            'points':0,
-            'wins':0,
-            },
-        'Hupszidézi':{
-            'group':'B',
-            'points':0,
-            'wins':0,
-            },
-        'That\'s what she set':{
-            'group':'B',
-            'points':0,
-            'wins':0,
-            },
-        'Avangurs':{
-            'group':'B',
-            'points':0,
-            'wins':0,
-            },
-        'Krrr':{
-            'group':'B',
-            'points':0,
-            'wins':0,
-            },
-        'Hóbortos hubihuszárnyunyuskák':{
-            'group':'B',
-            'points':0,
-            'wins':0,
-            },
-        'FRÖCCSKÖLŐK':{
-            'group':'C',
-            'points':0,
-            'wins':0,
-            },
-        'Give it up':{
-            'group':'C',
-            'points':0,
-            'wins':0,
-            },
-        'Pontverseny':{
-            'group':'C',
-            'points':0,
-            'wins':0,
-            },
-        'Volley Buli':{
-            'group':'C',
-            'points':0,
-            'wins':0,
-            },
-        'Nicolas Cage szektája':{
-            'group':'D',
-            'points':0,
-            'wins':0,
-            },
-        'Ászéjszaka':{
-            'group':'D',
-            'points':0,
-            'wins':0,
-            },
-        'Bioszból elég, ha kettes':{
-            'group':'D',
-            'points':0,
-            'wins':0,
-            },
-        'Csumpi csapat':{
-            'group':'D',
-            'points':0,
-            'wins':0,
-            },
-        'Last last minute':{
-            'group':'D',
-            'points':0,
-            'wins':0,
-            },
-        'ettemmaxddddd':{
-            'group':'E',
-            'points':0,
-            'wins':0,
-            },
-        'Végmoréna sánc':{
-            'group':'E',
-            'points':0,
-            'wins':0,
-            },
-        'A Team ++':{
-            'group':'E',
-            'points':0,
-            'wins':0,
-            },
-        'Vicceskóla':{
-            'group':'E',
-            'points':0,
-            'wins':0,
-            }
-        },
-    'groups':{}
+    'teams':{},
+    'groups':{},
+    'matches':{},
+    'current_round':0
     }
 
+abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']  # theoretical support of 8 pools
+for g in range(len(group_csv)):
+    data['groups'][abc[g]] = {1:'', 2:'', 3:''}
+    for t in match_csv[g]:
+        data['teams'][t] = {'group':abc[g], 'points':0, 'wins':0}
 
 matches = []
-
-for m in results:
+for m in match_csv:
     t = m[0]
     r = m[1]
     l = m[2]
@@ -167,10 +56,6 @@ for m in results:
     matches.append({'t':t, 'r':r, 'l':l, 'w':''})
 
 data['matches'] = matches
-
-group_names = ['A', 'B', 'C', 'D', 'E']
-for g in group_names:
-    data['groups'][g] = {1:'', 2:'', 3:''}
 
 def order(data):
     for g in data['groups']:

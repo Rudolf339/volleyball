@@ -2,8 +2,26 @@ import pygame
 import time
 import curses
 import data
+import json
 
-db = data.data
+try:
+    with open('progress_dump.json', 'r') as json_file:
+        json_str = json_file.read()
+        dumpfile = json.loads(json_str)
+        print('Dumpfile found.')
+        while True:
+            ans = input('Do you want to load it? y/n (y):')
+            if ans.lower().startswith('y') or ans == '':
+                db = dumpfile
+                break
+            elif ans.lower().startswith('n'):
+                db = data.data
+                break
+            else:
+                print('Invalid answer')
+
+except IOError:
+    db = data.data
 
 scrn = curses.initscr()
 
@@ -30,13 +48,9 @@ timeFont = pygame.font.SysFont('./font/Cousine-Regular.ttf', 400)
 X = 1920
 Y = 1080
 
-# games = [('Legyen Sánc!', 'Gucci Gang'),
-#          ('Next', 'Putty, ezt is lecsaptuk'),
-#          ('Csáki lehozza', 'Nutellák')
-#          ]
 games = []
-for g in db['matches']:
-    games.append((g['l'], g['r']))
+for g in range(db['current_round'], len(db['matches'])):
+    games.append((db['matches'][g]['l'], db['matches'][g]['r']))
 
 screen = pygame.display.set_mode((X, Y))
 pygame.display.set_caption('ponttábla')
@@ -70,7 +84,8 @@ def timeFormat(t):
 def next_round():
     games.remove(games[0])
 
-current_round = 0
+nxt = False
+
 c = time.time()
 # -------- Main Program Loop -----------
 while carryOn:
@@ -113,6 +128,8 @@ while carryOn:
             timer = not timer
         elif k == 'R':
             t = 0
+        elif k == 'N':
+            nxt = True
         elif k == 'KEY_LEFT':
             r += 1
         elif k == 'KEY_SLEFT':
@@ -185,7 +202,7 @@ while carryOn:
             screen.blit(left, (X / 2 - left.get_width() - 500, uy + i * 70))
             screen.blit(right, (X / 2 + 500, uy + i * 70))
 
-    if t >= 600 and l != r:  # There's a winner
+    if (t >= 600 and l != r) and nxt:  # There's a winner
         if l > r:
             db['teams'][games[0][0]]['wins'] += 1
         else:
@@ -196,16 +213,18 @@ while carryOn:
         l = 0
         r = 0
         timer = False
-        
-        current_round += 1
+        nxt = False
+        db['current_round'] += 1
         next_round()
+        with open('progress_dump.json', 'w') as dumpfile:
+            json.dump(db, dumpfile)
         
     # ----- curses write -----
     score_txt = str(r) + ' : ' + str(l)
     time_txt = str(cl[0]) + ':' + str(cl[1])
     scrn.addstr(4, 4, score_txt)
     scrn.addstr(5, 4, time_txt)
-    # scrn.addstr(6, 4, k)
+    scrn.addstr(6, 4, k)
     scrn.addstr(4, 12, games[0][0] + ' : ' + games[0][1] + ' ' * 5)
     
     # Refresh screens
