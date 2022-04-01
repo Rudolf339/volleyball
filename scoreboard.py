@@ -168,7 +168,15 @@ while carryOn:
         c = time.time()
         ct = c
 
-    if t >= 600:
+    if games[0][2] == 'selejtezo':
+        gametime = 420
+    elif games[0][2] == 'kozepdonto':
+        gametime = 600
+    elif (games[0][2] == 'elodonto' or
+          games[0][2] == 'donto' or
+          games[0][2] == 'bronz'):
+        gametime = 900
+    if t >= gametime:
         timer = False
 
     # ----- command execution -----
@@ -219,7 +227,7 @@ while carryOn:
     mtype = teamFont.render(games[0][2], 1, WHITE)
 
     # timer
-    if t < 590 or int(t) % 2 == 1:
+    if t < gametime-10 or int(t) % 2 == 1:
         minutes = timeFont.render(cl[0], 1, WHITE)
         seconds = timeFont.render(cl[1], 1, WHITE)
         dot2 = timeFont.render(':', 1, WHITE)
@@ -260,7 +268,7 @@ while carryOn:
             screen.blit(left, (X / 2 - left.get_width() - 200, uy + i * 70))
             screen.blit(right, (X / 2 + 200, uy + i * 70))
 
-    if db['current_round'] > 60:
+    if games[0][2] == 'elodonto':  # db['current_round'] > 60 or 
         QUICK = False
     if db['current_round'] < db['GM'] and QUICK:
         if random.random() > 0.5:
@@ -270,7 +278,7 @@ while carryOn:
         nxt = True
         t = 601
         
-    if (t >= 600 and l != r) and nxt:  # There's a winner
+    if (t >= gametime and l != r) and nxt:  # There's a winner
         if l > r and games[0][2] != 'tanári':
             db['teams'][games[0][0]]['wins'] += 1
             db['matches'][db['current_round']]['w'] = games[0][0]
@@ -290,7 +298,7 @@ while carryOn:
         db['current_round'] += 1
         next_round()
         scrn.clear()
-        # data.export(db, QUICK)
+        data.export(db, QUICK)
         with open('progress_dump.json', 'w') as dumpfile:
             json.dump(db, dumpfile)
             

@@ -1,4 +1,5 @@
-import csv, vb, os
+import csv
+import subprocess
 
 match_csv = []
 with open('./meccsek.csv') as csvfile:
@@ -159,5 +160,5 @@ def export(db, no_push):
     with open('table.md', 'w') as f:
         f.write(md)
     if not no_push:
-        os.system('bash ./updategist.sh')
+        subprocess.run(['bash', './updategist.sh'], stdout=subprocess.DEVNULL)
 

@@ -3,7 +3,9 @@ class team:
         self.name = name
         self.group = group
         self.point = 0
+        self.point2 = 0
         self.wins = 0
+        self.wins2 = 0
         self.losses = 0
     
     def win(self):
