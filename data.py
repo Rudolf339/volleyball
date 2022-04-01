@@ -2,13 +2,13 @@ import csv, vb, os
 
 match_csv = []
 with open('./meccsek.csv') as csvfile:
-    reader = csv.reader(csvfile, delimiter=';', quotechar='|')
+    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in reader:
         match_csv.append(row)
 
 group_csv = []
 with open('./csoportok.csv') as csvfile:
-    reader = csv.reader(csvfile, delimiter=';', quotechar='|')
+    reader = csv.reader(csvfile, delimiter=',', quotechar='|')
     raw_csv = []
     for row in reader:
         raw_csv.append(row)
@@ -101,7 +101,8 @@ def order(data):
 
     return data
 
-def export(db):
+
+def export(db, no_push):
     _ = ' | '
     md = '#### Éjszakai Röpi 2022\n'
     md += '| csapatnév            | csoport | nyert | pont |\n'
@@ -157,5 +158,6 @@ def export(db):
 
     with open('table.md', 'w') as f:
         f.write(md)
-    os.system('bash ./updategist.sh')
-    
+    if not no_push:
+        os.system('bash ./updategist.sh')
+

@@ -1,64 +1,71 @@
-19:00;Csak úgy;Ked Regeli Djuras;selejtező
-19:10;That's what she set;Krrr;selejtező
-19:20;Pontverseny;Volley Buli;selejtező
-19:30;Last last minute;Nicolas Cage szektája;selejtező
-19:40;Vicceskóla;Végmoréna sánc;selejtező
-19:50;Wasserspitzmäuser;MAMBA;selejtező
-20:00;Hupszidézi;Avangurs;selejtező
-20:10;Krrr;Tanári csapat;tanári
-20:20;FRÖCCSKÖLŐK;Give it up;selejtező
-20:30;Ászéjszaka;Bioszból elég, ha kettes leszek;selejtező
-20:40;Vicceskóla;Tanári csapat;tanári
-20:50;Ettemmaxddddd;A Team ++;selejtező
-21:00;FRÖCCSKÖLŐK;Let's slam!;selejtező
-21:10;ChickNwins;Ked Regeli Djuras;selejtező
-21:20;That's what she set;Hóbortos hubihuszárnyunyuskák;selejtező
-21:30;Give it up;Pontverseny;selejtező
-21:40;Csumpi csapat;Last last minute;selejtező
-21:50;Végmoréna sánc;A Team ++;selejtező
-22:00;ChickNwins;Csak úgy;selejtező
-22:10;Hupszidézi;Krrr;selejtező
-22:20;Give it up;Let's slam!;selejtező
-22:30;FRÖCCSKÖLŐK;Volley Buli;selejtező
-22:40;Nicolas Cage szektája;Bioszból elég, ha kettes leszek;selejtező
-22:50;Ettemmaxddddd;Vicceskóla;selejtező
-23:00;Wasserspitzmäuser;Ked Regeli Djuras;selejtező
-23:10;Pontverseny;Let's slam!;selejtező
-23:20;That's what she set;Avangurs;selejtező
-23:30;Give it up;Volley Buli;selejtező
-23:40;Ászéjszaka;Last last minute;selejtező
-23:50;Ettemmaxddddd;Végmoréna sánc;selejtező
-0:00;Csak úgy;MAMBA;selejtező
-0:10;Hupszidézi;Hóbortos hubihuszárnyunyuskák;selejtező
-0:20;FRÖCCSKÖLŐK;Pontverseny;selejtező
-0:30;Csumpi csapat;Bioszból elég, ha kettes leszek;selejtező
-0:40;Vicceskóla;A Team ++;selejtező
-0:50;Volley Buli;Let's slam!;selejtező
-1:00;ChickNwins;Wasserspitzmäuser;selejtező
-1:10;Krrr;Avangurs;selejtező
-1:20;Nicolas Cage szektája;Csumpi csapat;selejtező
-1:30;ChickNwins;MAMBA;selejtező
-1:40;Hupszidézi;That's what she set;selejtező
-1:50;Last last minute;Bioszból elég, ha kettes leszek;selejtező
-2:00;Csumpi csapat;Ászéjszaka;selejtező
-2:10;Ked Regeli Djuras;MAMBA;selejtező
-2:20;Krrr;Hóbortos hubihuszárnyunyuskák;selejtező
-2:30;Ászéjszaka;Nicolas Cage szektája;selejtező
-2:40;Csak úgy;Wasserspitzmäuser;selejtező
-2:50;Avangurs;Hóbortos hubihuszárnyunyuskák;selejtező
-3:00;#GA1;#GB3;nyolcaddöntő
-3:10;#GB1;#GA3;nyolcaddöntő
-3:20;#GC1;#GD3;nyolcaddöntő
-3:30;#GD1;#GE3;nyolcaddöntő
-3:40;#GE1;#GC3;nyolcaddöntő
-3:50;#GA2;#GB2;nyolcaddöntő
-4:00;#GC2;#GD2;nyolcaddöntő
-4:10;#GE2;K_D;nyolcaddöntő
-4:20;#49W;#51W;negyeddöntő
-4:30;#50W;#52W;negyeddöntő
-4:40;#53W;#54W;negyeddöntő
-4:50;#55W;#56W;negyeddöntő
-5:00;#57W;#58W;elődöntő
-5:10;#59W;#60W;elődöntő
-5:20;#61L;#62L;bronzmeccs
-5:30;#61W;#62W;döntő
+19:00,Pancakers,Tudja hol szeret a cápa,selejtezo
+19:07,Kole world,Deutsche Volleyball Nationalmannschaft,selejtezo
+19:14,Kicsi de fürge,Ananászok,selejtezo
+19:21,Ász ász baby,Vall-E,selejtezo
+19:28,Zsuzsi,A minőségi,selejtezo
+19:35,Barkesz FC,Csumpi Csapat,selejtezo
+19:42,(H)üdítők,Cserháti Vörösmetorok,selejtezo
+19:49,Röppentyűk,Donáték,selejtezo
+19:56,LA Lakers,Smack That,selejtezo
+20:03,NEM ÉN!,Ked reggeli djurok,selejtezo
+20:10,Furkászok,Pancakers,selejtezo
+20:17,Tűzsárkányok,Kole world,selejtezo
+20:24,A+,Kicsi de fürge,selejtezo
+20:31,Malibu,Ász ász baby,selejtezo
+20:38,Dzsimin and the Gang,Zsuzsi,selejtezo
+20:45,Tudja hol szeret a cápa,Barkesz FC,selejtezo
+20:52,Deutsche Volleyball Nationalmannschaft,(H)üdítők,selejtezo
+21:00,diák,tanári,tanári
+21:12,Ananászok,Röppentyűk,selejtezo
+21:15,Vall-E,LA Lakers,selejtezo
+21:22,A minőségi,NEM ÉN!,selejtezo
+21:29,Csumpi Csapat,Furkászok,selejtezo
+21:36,Cserháti Vörösmetorok,Tűzsárkányok,selejtezo
+21:43,Donáték,A+,selejtezo
+21:50,Smack That,Malibu,selejtezo
+21:52,Ked reggeli djurok,Dzsimin and the Gang,selejtezo
+21:59,Pancakers,Barkesz FC,selejtezo
+22:06,Kole world,(H)üdítők,selejtezo
+22:13,Kicsi de fürge,Röppentyűk,selejtezo
+22:20,Ász ász baby,LA Lakers,selejtezo
+22:27,Zsuzsi,NEM ÉN!,selejtezo
+22:34,Tudja hol szeret a cápa,Csumpi Csapat,selejtezo
+22:41,Deutsche Volleyball Nationalmannschaft,Cserháti Vörösmetorok,selejtezo
+22:48,Ananászok,Donáték,selejtezo
+22:55,Vall-E,Smack That,selejtezo
+23:02,A minőségi,Ked reggeli djurok,selejtezo
+23:09,Furkászok,Barkesz FC,selejtezo
+23:16,Tűzsárkányok,(H)üdítők,selejtezo
+23:23,A+,Röppentyűk,selejtezo
+23:30,Malibu,LA Lakers,selejtezo
+23:37,Dzsimin and the Gang,NEM ÉN!,selejtezo
+23:44,Pancakers,Csumpi Csapat,selejtezo
+23:51,Kole world,Cserháti Vörösmetorok,selejtezo
+23:58,Kicsi de fürge,Donáték,selejtezo
+0:05,Ász ász baby,Smack That,selejtezo
+0:12,Zsuzsi,Ked reggeli djurok,selejtezo
+0:19,Tudja hol szeret a cápa,Furkászok,selejtezo
+0:26,Deutsche Volleyball Nationalmannschaft,Tűzsárkányok,selejtezo
+0:33,Ananászok,A+,selejtezo
+0:40,Vall-E,Malibu,selejtezo
+0:47,A minőségi,Dzsimin and the Gang,selejtezo
+1:00,#GA1,#GB2,kozepdonto
+1:10,#GA2,#GB1,kozepdonto
+1:20,#GC1,#GD2,kozepdonto
+1:30,#GC2,#GD1,kozepdonto
+1:40,#GE1,#GA1,kozepdonto
+1:50,#GE2,#GA2,kozepdonto
+2:00,#GB2,#GC1,kozepdonto
+2:10,#GB1,#GC2,kozepdonto
+2:20,#GD2,#GE1,kozepdonto
+2:30,#GD1,#GE2,kozepdonto
+2:40,#GA1,#GC1,kozepdonto
+2:50,#GA2,#GC2,kozepdonto
+3:00,#GB2,#GD2,kozepdonto
+3:10,#GB1,#GD1,kozepdonto
+3:20,#GC1,#GE1,kozepdonto
+3:30,#GC2,#GE2,kozepdonto
+3:40,#GA1,#GD2,kozepdonto
+3:50,#GA2,#GD1,kozepdonto
+4:00,#GB2,#GE1,kozepdonto
+4:10,#GB1,#GE2,kozepdonto

@@ -290,7 +290,7 @@ while carryOn:
         db['current_round'] += 1
         next_round()
         scrn.clear()
-        data.export(db)
+        # data.export(db, QUICK)
         with open('progress_dump.json', 'w') as dumpfile:
             json.dump(db, dumpfile)
             
