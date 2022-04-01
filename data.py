@@ -103,7 +103,7 @@ def order(data):
 
 def export(db):
     _ = ' | '
-    md = '####Éjszakai Röpi 2020\n'
+    md = '#### Éjszakai Röpi 2022\n'
     md += '| csapatnév            | csoport | nyert | pont |\n'
     md += '|----------------------------------|---|---|----|\n'
     for t in db['teams'].keys():
@@ -157,5 +157,5 @@ def export(db):
 
     with open('table.md', 'w') as f:
         f.write(md)
-    os.system('markdown2 table.md > table.html')
+    os.system('bash ./updategist.sh')
     

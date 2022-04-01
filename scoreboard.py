@@ -6,7 +6,7 @@ import json
 import random
 
 DEBUG = True
-QUICK = True
+QUICK = False
 carryOn = True
 
 try:
@@ -117,7 +117,7 @@ while carryOn:
             
     try:
         k = scrn.getkey()
-    except:
+    except curses.error:
         k = ''
 
     if cmd_mode:
@@ -262,7 +262,7 @@ while carryOn:
 
     if db['current_round'] > 60:
         QUICK = False
-    if db['current_round'] < db['GM'] or QUICK:
+    if db['current_round'] < db['GM'] and QUICK:
         if random.random() > 0.5:
             l = 1
         else:
@@ -316,7 +316,7 @@ while carryOn:
     except IndexError:
         pass
     try:
-        scrn.addstr(7, 12, games[3][1] + ' : ' + games[2][0] + ' ' * 5)
+        scrn.addstr(7, 12, games[2][1] + ' : ' + games[2][0] + ' ' * 5)
     except IndexError:
         pass
     try:
